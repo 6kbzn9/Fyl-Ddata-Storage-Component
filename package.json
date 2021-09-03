@@ -1,0 +1,20 @@
+{
+  "name": "flyo-data-storage-component",
+  "version": "1.0.0",
+  "description": "'frontend mentor challenge'",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "6kbzn9",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.39.0",
+    "cssnano": "^5.0.8",
+    "gulp-postcss": "^9.0.1"
+  }
+ 
+}
