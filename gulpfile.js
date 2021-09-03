@@ -20,9 +20,8 @@ function browsersyncServe(cb) {
   cb();
 }
 
-function browsersyncReload(cb) {
+function browsersyncReload() {
   browsersync.reload();
-  cb();
 }
 
 // Watch Task

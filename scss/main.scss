@@ -1,3 +1,178 @@
+// variables
+$Gradient1: hsl(6, 100%, 80%);
+$Gradient2: hsl(335, 100%, 65%);
+$PaleBlue: hsl(243, 100%, 93%);
+$GrayishBlue: hsl(229, 7%, 55%);
+$DarkBlue: hsl(228, 56%, 26%);
+$VeryDarkBlue: hsl(229, 57%, 11%);
+
+// resets
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//media query mixin
+@mixin smaller($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin bigger($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
-  color: green;
+  min-height: 100vh;
+  background: url(../images/bg-mobile.png) center center no-repeat;
+  background-size: cover;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.4rem;
+  color: $PaleBlue;
+}
+
+.logo {
+  width: 100%;
+}
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  padding: 12rem 0 15rem;
+  & > * {
+    border-radius: 1rem;
+    background-color: $DarkBlue;
+    padding: 4rem 2.5rem;
+  }
+}
+
+.header {
+  border-top-right-radius: 6rem;
+  margin-bottom: 2rem;
+
+  &__logo {
+    width: 14rem;
+    margin-bottom: 4rem;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 1rem;
+    background-color: $VeryDarkBlue;
+
+    &:not(:last-child) {
+      margin-right: 1.6rem;
+    }
+  }
+}
+
+.main {
+  padding-bottom: 6rem;
+  position: relative;
+
+  &__heading {
+    color: $GrayishBlue;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.65rem;
+
+    & span {
+      color: $PaleBlue;
+      font-weight: 700;
+    }
+  }
+
+  &__storage {
+    $used: 81.5%;
+    position: relative;
+    width: 100%;
+    height: 2rem;
+    background-color: inherit;
+    border: 2px solid $VeryDarkBlue;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      width: $used;
+      height: 100%;
+      background: linear-gradient(to right, $Gradient1, $Gradient2);
+    }
+
+    &::after {
+      background-color: $PaleBlue;
+      width: 1.3rem;
+      height: 1.3rem;
+      top: 50%;
+      left: $used;
+      transform: translate(-118%, -50%);
+    }
+  }
+
+  &__GB {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    border-radius: inherit;
+    background: $PaleBlue;
+    color: $GrayishBlue;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+
+    & span {
+      color: $VeryDarkBlue;
+      font-size: 4rem;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+}
+
+@include smaller(370px) {
+  html {
+    font-size: 58%;
+  }
+}
+
+@include smaller(335px) {
+  html {
+    font-size: 52%;
+  }
 }
