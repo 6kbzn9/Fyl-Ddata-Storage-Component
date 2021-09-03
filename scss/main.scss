@@ -39,6 +39,14 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 1.4rem;
   color: $PaleBlue;
+
+  @include bigger(500px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(../images/bg-desktop.png) center center no-repeat;
+    background-size: cover;
+  }
 }
 
 .logo {
@@ -46,17 +54,29 @@ body {
 }
 .wrapper {
   width: 90%;
+  max-width: 350px;
   margin: 0 auto;
-  padding: 12rem 0 15rem;
+  padding: 12rem 0 15rem 0;
   & > * {
     border-radius: 1rem;
     background-color: $DarkBlue;
     padding: 4rem 2.5rem;
   }
+
+  @include bigger(730px) {
+    max-width: 930px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  & > * {
+    flex: 1 1 300px;
+  }
 }
 
 .header {
-  border-top-right-radius: 6rem;
+  border-top-right-radius: 10rem;
   margin-bottom: 2rem;
 
   &__logo {
@@ -73,13 +93,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     border-radius: 1rem;
     background-color: $VeryDarkBlue;
 
     &:not(:last-child) {
       margin-right: 1.6rem;
+    }
+  }
+
+  @include bigger(730px) {
+    margin-bottom: 0;
+    margin-right: 1.6rem;
+    max-width: 35rem;
+
+    &__logo {
+      margin-bottom: 3rem;
     }
   }
 }
@@ -132,25 +162,26 @@ body {
       height: 1.3rem;
       top: 50%;
       left: $used;
-      transform: translate(-118%, -50%);
+      transform: translate(-115%, -50%);
     }
   }
 
   &__GB {
     display: flex;
     justify-content: space-between;
+    font-weight: 700;
   }
 
   &__left {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1rem 2rem;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: 1rem 2.5rem;
     border-radius: inherit;
     background: $PaleBlue;
     color: $GrayishBlue;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -163,16 +194,54 @@ body {
       margin-right: 1rem;
     }
   }
-}
 
-@include smaller(370px) {
-  html {
-    font-size: 58%;
+  @include bigger(730px) {
+    padding-bottom: 4rem;
+    flex-grow: 2;
+
+    &__heading {
+      text-align: start;
+      margin-bottom: 1.25rem;
+    }
+
+    &__storage {
+      margin-bottom: 0.5rem;
+    }
   }
-}
 
-@include smaller(335px) {
-  html {
-    font-size: 52%;
+  @include bigger(850px) {
+    &__left {
+      top: 0;
+      right: 0;
+      transform: translate(-2.5rem, -50%);
+      padding: 1rem 2.5rem;
+      border-bottom-right-radius: 0;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 100%;
+        right: 0;
+        width: 0;
+        height: 0;
+        border: 2.5rem solid transparent;
+        border-right-color: $PaleBlue;
+        transform: rotate(0deg) translateY(-50%);
+      }
+    }
+  }
+
+  @include smaller(370px) {
+    html {
+      font-size: 58%;
+    }
+  }
+
+  @include smaller(335px) {
+    html {
+      font-size: 52%;
+    }
   }
 }
